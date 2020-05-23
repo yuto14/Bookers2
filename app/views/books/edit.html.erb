@@ -24,10 +24,10 @@
 
                       <%= form_for(@book) do |f| %>
 	                    <p>Title</p>
-                      <p><%= f.text_field :title %></p>
+                      <p><%= f.text_field :title, class: "form-control" %></p>
 
                       <p>Opinion</p>
-                      <p><%= f.text_field :body %></p>
+                      <p><%= f.text_field :body, class: "form-control" %></p>
 
                       <p></p>
 

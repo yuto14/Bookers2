@@ -23,7 +23,7 @@
             <%= form_for(@user) do |f| %>
 
             <p>Name</p>
-            <%= f.text_field :name %>
+            <p><%= f.text_field :name %></p>
 
             <p>Image</p>
             <p><%= f.attachment_field :profile_image %></p>
@@ -32,7 +32,9 @@
             <p>Introduction</p>
             <%= f.text_field :introduction %>
 
-            <%= f.submit "Update User" %>
+            <p></p>
+
+            <p><%= f.submit "Update User" %></p>
 
             <% end %>
         </div>
