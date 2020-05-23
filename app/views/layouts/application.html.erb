@@ -10,6 +10,70 @@
   </head>
 
   <body>
+    <header style="background-color: black;">
+        <div class="container">
+            <div class="row">
+                <h3 style="margin: 0; color: white;">Bookers</h3>
+            </div>
+            <% if user_signed_in? %>
+            <div class="row">
+                <div class="col-xs-8"></div>
+                <div class="col-xs-1" style="color: #9d9d9d; margin-bottom: 15px;">
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"><%=link_to "Home", user_path(current_user.id) %>
+                    </span>
+                </div>
+                <div class="col-xs-1" style="color: #9d9d9d;">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"><%= link_to "Users", users_path %>
+                    </span>
+                </div>
+                <div class="col-xs-1" style="color: #9d9d9d;">
+                    <span class="glyphicon glyphicon-book" aria-hidden="true"><%= link_to "Books", books_path %>
+                    </span>
+                </div>
+                <div class="col-xs-1" style="color: #9d9d9d;">
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"><%=link_to "logout", destroy_user_session_path, method: :delete %>
+                    </span>
+                </div>
+            </div>
+            <% else %>
+            <div class="row">
+                <div class="col-xs-8"></div>
+                <div class="col-xs-1" style="color: #9d9d9d; margin-bottom: 15px">
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"><%=link_to "Home", root_path %>
+                    </span>
+                </div>
+                <div class="col-xs-1" style="color: #9d9d9d;">
+                    <span class="glyphicon glyphicon-link" aria-hidden="true"><%= link_to "about", home_about_path %></span>
+                </div>
+                <div class="col-xs-1" style="color: #9d9d9d;">
+                    <p><span class="glyphicon glyphicon-edit" aria-hidden="true"><%= link_to "sign up", new_user_registration_path %>
+                    </span></p>
+                </div>
+                <div class="col-xs-1" style="color: #9d9d9d;">
+                    <span class="glyphicon glyphicon-log-in" aria-hidden="true"> <%= link_to "login", new_user_session_path %>
+                    </span>
+                </div>
+            <% end %>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <%= notice %>
+    </div>
+
     <%= yield %>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-9"></div>
+                <div class="col-xs-2"><p>CopyRight Infratop.inc</p>
+                </div>
+                <div class="col-xs-1"></div>
+            </div>
+        </div>
+    </footer>
+
   </body>
 </html>

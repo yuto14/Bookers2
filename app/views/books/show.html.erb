@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>book_show</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="profile">
+                    <h1>User info</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><%= attachment_image_tag @user,:profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>name</td>
+                                <td><%= @user.name %></td>
+                            </tr>
+                            <tr>
+                                <td>introduction</td>
+                                <td><%= @user.introduction %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div>
+                        <% if @user.id == current_user.id %>
+                        <%= link_to edit_user_path(@user) do %>
+                        <button class="btn btn-default btn-block"><i class="glyphicon glyphicon-wrench" aria-hidden="true"></i></button>
+                        <% end %>
+                        <% end %>
+                    </div>
+                </div>
+
+                <div class="create">
+                    <h2>New Book</h2>
+                    <%= form_for(@book1) do |f| %>
+
+                    <h4>Title</h4>
+                    <%= f.text_field :title %>
+
+                    <h4>Opinion</h4>
+                    <%= f.text_area :body %>
+
+                    <p><%= f.submit "Create Book", class: "btn btn-default btn-block" %></p>
+
+                    <% end %>
+                </div>
+            </div>
+            <div class="col-xs-9">
+                <div class="book.show">
+                    <h1>Book detail</h1>
+                    <table class="table">
+    	                <tr>
+    		                <td><%= link_to user_path(@user) do %>
+                                <%= attachment_image_tag @user,:profile_image, :fill, 40, 40, fallback: "no_image.jpg" %>
+                                    <p><%= @user.name %></p></td>
+                                <% end %>
+    		                <td><%= @book.title %></td>
+    		                <td><%= @book.body %></td>
+                            <% if @book.user.id == current_user.id %>
+    		                <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-default" %></td>
+                            <td><%= link_to "Destroy", book_path(@book.id), class: "btn btn-default", method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+                            <% end %>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
